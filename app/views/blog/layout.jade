@@ -2,6 +2,7 @@ extends ../layout
 
 append css
   link(rel='stylesheet', href='/css/blog.css')
+  link(rel='stylesheet', href='/components/font-awesome/css/font-awesome.css')
 
 block main
   block header
@@ -24,10 +25,6 @@ block main
             a.blog-nav-item(href="/contact") 联系
 
   div.container
-    div.blog-header
-      div.blog-title The Bootstrap Blog!
-      p.lead.blog-description The official example template of creating a blog with Bootstrap.
-
 
     div.row
       div.col-sm-8.blog-main
@@ -35,38 +32,15 @@ block main
 
       .col-sm-3.col-sm-offset-1.blog-sidebar
         .sidebar-module.sidebar-module-inset
-          h4 About
-          p
-            | Etiam porta
-            em sem malesuada magna
-            |  mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
+
         .sidebar-module
-          h4 Archives
+          h4 文章分类
           ol.list-unstyled
-            li
-              a(href='#') March 2014
-            li
-              a(href='#') February 2014
-            li
-              a(href='#') January 2014
-            li
-              a(href='#') December 2013
-            li
-              a(href='#') November 2013
-            li
-              a(href='#') October 2013
-            li
-              a(href='#') September 2013
-            li
-              a(href='#') August 2013
-            li
-              a(href='#') July 2013
-            li
-              a(href='#') June 2013
-            li
-              a(href='#') May 2013
-            li
-              a(href='#') April 2013
+            each category in categories
+              li
+                a(href='/posts/category/' + category.name)= category.name
+
+
         .sidebar-module
           h4 Elsewhere
           ol.list-unstyled

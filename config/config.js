@@ -9,7 +9,7 @@ var config = {
       name: 'personblog'
     },
     port: process.env.PORT || 3000,
-    db: 'mongodb://localhost/personblog-development'
+    db: 'mongodb://localhost/nodeblog'
   },
 
   test: {
