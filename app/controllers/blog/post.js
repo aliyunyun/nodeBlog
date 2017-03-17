@@ -10,7 +10,7 @@ module.exports = function (app) {
 
 router.get('/', function (req, res, next) {
   Post.find({published: true})
-    .sort('created')
+    .sort('-created')
     .populate('author')
     .populate('category')
     .exec(function (err, posts) {
@@ -201,6 +201,8 @@ router.post('/comment/:id', function (req, res, next) {
       console.log("comment: " + JSON.stringify(comment));
 
       post.save(function(err, post){
+        req.flash('info',"评论添加成功");
+        console.log("info 评论添加成功");
         res.redirect('/posts/view/'+post.slug);
       });
 

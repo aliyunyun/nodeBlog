@@ -1,0 +1,47 @@
+
+extends ../layout
+
+block content
+  != messages()
+  h2.page-header 分类列表
+
+
+  table.table.table-bordered
+    thead
+      tr
+        th(width="30%") 分类
+        th 别名
+        th 创建时间
+        th 管理
+    tbody
+    each category in categories
+      tr
+        td
+          =category.name
+        td
+          =category.category
+        td= moment(category.created).format('YYYY-MM-DD')
+        td
+          a(href="/admin/posts/?page="+ pageNum +"&category=" + category._id, target="__blank" class="btn btn-sm btn-success") 查看
+          &nbsp;&nbsp;
+          a(href="/admin/category/edit/" + category._id, target="__blank" class="btn btn-sm btn-info") 编辑
+          &nbsp;&nbsp;
+          a(href="/admin/category/delete/" + category._id, target="__blank" class="btn btn-sm btn-danger") 删除
+
+
+
+if pageCount > 1
+  nav
+    ul.pagination
+      - var currentPage = 1
+      while currentPage < pageCount
+        if (currentPage === pageNum)
+          li.active
+            a(href="/admin/posts?page=" + currentPage )= currentPage++
+        else
+          li
+            a(href="/admin/posts?page=" + currentPage )= currentPage++
+
+block scripts
+  script(src="/js/querystring.js")
+  script(src="/js/admin/admin.js")

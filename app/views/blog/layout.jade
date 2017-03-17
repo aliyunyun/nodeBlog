@@ -24,15 +24,16 @@ block main
           else
             a.blog-nav-item(href="/contact") 联系
 
-  div.container
 
+  div.container
     div.row
       div.col-sm-8.blog-main
+        != messages()
         block content
 
       .col-sm-3.col-sm-offset-1.blog-sidebar
         .sidebar-module.sidebar-module-inset
-
+          h1    &nbsp
         .sidebar-module
           h4 文章分类
           ol.list-unstyled
@@ -42,7 +43,7 @@ block main
 
 
         .sidebar-module
-          h4 Elsewhere
+          h4 友情链接
           ol.list-unstyled
             li
               a(href='#') GitHub
@@ -51,8 +52,6 @@ block main
             li
               a(href='#') Facebook
       // /.blog-sidebar
-
-
 
   block footer
     footer.blog-footer
