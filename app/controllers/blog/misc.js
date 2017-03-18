@@ -12,14 +12,14 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/about', function (req, res, next) {
-  res.render('blog/index', {
+  res.render('blog/about', {
     title: 'Generator-Express MVC about',
     articles: "about"
   });
 });
 
 router.get('/contact', function (req, res, next) {
-  res.render('blog/index', {
+  res.render('blog/contact', {
     title: 'Generator-Express MVC contact',
     articles: "home"
   });

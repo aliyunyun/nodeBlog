@@ -8,7 +8,7 @@ block main
   block header
     div.blog-masthead
       div.container
-        nav.blog-nav
+        nav.blog-nav.pull-left
           if (pageName === '/')
             a.blog-nav-item.active(href="/") 首页
           else
@@ -23,7 +23,8 @@ block main
             a.blog-nav-item.active(href="/contact") 联系
           else
             a.blog-nav-item(href="/contact") 联系
-
+        form.navbar-form.pull-right(method='get', action='/posts/')
+          input#js-keyword.form-control(type="text",placeholder="Search for ...",name="keyword")
 
   div.container
     div.row
@@ -55,7 +56,12 @@ block main
 
   block footer
     footer.blog-footer
-      p Blog template built for
-        a(href="http://getbootstrap.com") Bootstrap
+      p Blog template built by YY
       p
-        a(herf="#") Back to top
+        a(href="#") 回到顶部
+        &nbsp&nbsp&nbsp&nbsp
+        a(href="/admin/users/login") 用户登录
+        &nbsp&nbsp&nbsp&nbsp
+        a(href="/admin/users/register") 用户注册
+
+

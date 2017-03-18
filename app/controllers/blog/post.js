@@ -9,7 +9,15 @@ module.exports = function (app) {
 };
 
 router.get('/', function (req, res, next) {
-  Post.find({published: true})
+
+  var condition = {published: true};
+  if(req.query.keyword){
+    console.log("keyword: " + req.query.keyword);
+    condition.title = new RegExp(req.query.keyword.trim(), 'i');
+    condition.content = new RegExp(req.query.keyword.trim(), 'i');
+  }
+
+  Post.find(condition)
     .sort('-created')
     .populate('author')
     .populate('category')

@@ -16,6 +16,8 @@ router.get('/', function (req, res, next) {
     // sort
     var sortby = req.query.sortby ? req.query.sortby : "created";
     var sortDir = req.query.sortdir ? req.query.sortdir : "desc";
+
+
     var sortConticion = {};
     sortConticion[sortby] = sortDir
 
@@ -30,6 +32,13 @@ router.get('/', function (req, res, next) {
       if(req.query.author){
         condition.author = req.query.author.trim();
       }
+
+      if(req.query.keyword){
+        console.log("keyword: " + req.query.keyword);
+        condition.title = new RegExp(req.query.keyword.trim(), 'i');
+        condition.content = new RegExp(req.query.keyword.trim(), 'i');
+      }
+
       //condition
       Post.find(condition)
         .sort(sortConticion)
@@ -64,6 +73,7 @@ router.get('/', function (req, res, next) {
             filter:{
               category:  condition["category"] || "",
               author:  condition["author"] ||"",
+              keyword: condition["keyword"] || "",
             }
           });
 

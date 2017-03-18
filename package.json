@@ -20,10 +20,13 @@
     "express-session": "^1.15.1",
     "glob": "^6.0.4",
     "jade": "^1.11.0",
+    "md5": "^2.2.1",
     "method-override": "^2.3.0",
     "moment": "^2.17.1",
     "mongoose": "^4.1.2",
     "morgan": "^1.6.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "pinyin": "^2.8.2",
     "query-string": "^4.3.2",
     "serve-favicon": "^2.3.0"

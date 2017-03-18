@@ -15,7 +15,7 @@ var Category = mongoose.model('Category');
 var User = mongoose.model('User');
 
 var session = require('express-session');
-
+var passport = require('passport');
 
 module.exports = function(app, config) {
   var env = process.env.NODE_ENV || 'development';
@@ -83,6 +83,9 @@ module.exports = function(app, config) {
     saveUninitialized: true,
     cookie: { secure: false }
   }));
+  app.use(passport.initialize());
+  app.use(passport.session());
+
   app.use(require('connect-flash')());
   app.use(function(req,res, next){
     res.locals.messages = require('express-messages')(req, res);
